@@ -17,7 +17,7 @@ export default function App() {
         <Navbar />
         <CartDrawer />
         <main className="flex-1 flex flex-col">
-          <Routes>
+          <Routes basename="/wcpower">
             <Route path="/" element={<Home />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/product/:id" element={<ProductDetail />} />
