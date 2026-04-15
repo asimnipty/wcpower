@@ -27,6 +27,9 @@ jobs:
       - name: Build
         run: npx vite build
 
+      - name: Show dist contents
+        run: ls -la dist/
+
       - name: Copy 404.html
         run: cp dist/index.html dist/404.html
 
