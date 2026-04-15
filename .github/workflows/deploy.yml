@@ -25,9 +25,9 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        run: npx vite build
 
-      - name: Copy index.html as 404.html (for client-side routing)
+      - name: Copy 404.html
         run: cp dist/index.html dist/404.html
 
       - name: Setup Pages
@@ -38,5 +38,5 @@ jobs:
         with:
           path: './dist'
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         uses: actions/deploy-pages@v4
