@@ -30,7 +30,7 @@ export default function App() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
                 <img
-                  src="/wcpower/logo.jpeg"
+                  src="/wcpower/logo1.png"
                   alt="Welcare Power Ltd."
                   className="h-10 w-auto object-contain mb-4 brightness-0 invert"
                 />

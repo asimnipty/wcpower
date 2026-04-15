@@ -17,7 +17,7 @@ export function Navbar() {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <img
-                src="/wcpower/logo.jpeg"
+                src="/wcpower/logo2.png"
                 alt="Welcare Power Ltd."
                 className="h-10 w-auto object-contain"
               />
