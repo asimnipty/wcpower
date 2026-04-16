@@ -1,59 +1,42 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../data/products';
 import { useCartStore } from '../store/useCartStore';
-import { ShoppingCart } from 'lucide-react';
-import React from 'react';
 
 export const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
-  const addItem = useCartStore((state) => state.addItem);
+  const additem = useCartStore((state) => state.additem);
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300">
-      <Link to={`/product/${product.id}`} className="relative aspect-square overflow-hidden bg-gray-100">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+    <div className="group flex flex-col bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
+      <Link 
+        to={`/product/${product.id}`} 
+        className="relative aspect-square bg-[#0c1c30] border-b-[30px] border-[#99e2b4] overflow-hidden"
+      >
+        <img 
+          src={product.image} 
+          alt={product.name} 
+          className="h-full w-full object-contain p-6 group-hover:scale-110 transition-transform duration-500" 
         />
         {!product.inStock && (
-          <div className="absolute inset-0 bg-white/60 backdrop-blur-sm flex items-center justify-center">
-            <span className="px-4 py-2 bg-gray-900 text-white text-sm font-bold rounded-full uppercase tracking-wider">
-              Out of Stock
-            </span>
-          </div>
+          <span className="absolute top-4 right-4 bg-black/70 text-white text-[10px] px-2 py-1 rounded-full uppercase font-bold">Upcoming</span>
         )}
       </Link>
       
-      <div className="flex flex-col flex-1 p-5">
-        <div className="flex justify-between items-start mb-2">
-          <div>
-            <p className="text-xs font-medium text-blue-600 mb-1 uppercase tracking-wider">{product.category}</p>
-            <h3 className="text-lg font-semibold text-gray-900 line-clamp-1">
-              <Link to={`/product/${product.id}`}>
-                <span aria-hidden="true" className="absolute inset-0" />
-                {product.name}
-              </Link>
-            </h3>
-          </div>
-          <p className="text-lg font-bold text-gray-900">${product.price}</p>
-        </div>
-        
-        <p className="text-sm text-gray-500 line-clamp-2 mb-4 flex-1">
-          {product.description}
+      <div className="p-5 text-center flex-1 flex flex-col">
+        <span className="text-[10px] text-green-600 font-bold uppercase tracking-widest mb-1">{product.category}</span>
+        <h3 className="text-gray-900 font-semibold mb-2 line-clamp-1">{product.name}</h3>
+        <p className="text-lg font-bold text-gray-800 mb-4">
+          <span className="text-xs text-gray-400 mr-1">BDT</span>
+          {product.price.toLocaleString()}
         </p>
         
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            addItem(product);
-          }}
-          disabled={!product.inStock}
-          className="relative z-10 flex w-full items-center justify-center gap-2 rounded-xl bg-gray-900 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-800 disabled:bg-gray-300 disabled:cursor-not-allowed"
+        <button 
+          onClick={() => additem(product)}
+          className="mt-auto w-full py-2 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded transition-colors"
         >
-          <ShoppingCart className="h-4 w-4" />
           Add to Cart
         </button>
       </div>
     </div>
   );
-}
+};

@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { ArrowRight, Zap, Shield, Truck } from 'lucide-react';
-import { products } from '../data/products';
-import { ProductCard } from '../components/ProductCard';
+import { Link } from "react-router-dom";
+import { ArrowRight, Zap, Shield, Truck } from "lucide-react";
+import { products } from "../data/products";
+import { ProductCard } from "../components/ProductCard";
 
 export function Home() {
   const featuredProducts = products.slice(0, 3);
@@ -18,15 +18,20 @@ export function Home() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/80 to-transparent" />
         </div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
-              Next-Gen Tech, <br />
-              <span className="text-blue-500">Delivered Today.</span>
+              Welcare – Your Trusted Partner in Saving Electricity <br />
+              <span className="text-blue-500">
+                {" "}
+                Originality – Imagination – Aspiration
+              </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-300 mb-10">
-              Discover the latest in premium electronics. From ultra-fast laptops to immersive audio, upgrade your digital life with VoltStore.
+              Discover the latest in premium electronics. From ultra-fast
+              laptops to immersive audio, upgrade your digital life with
+              VoltStore.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -57,7 +62,9 @@ export function Home() {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900">Lightning Fast</h3>
-                <p className="text-sm text-gray-500">Next-day delivery on all orders</p>
+                <p className="text-sm text-gray-500">
+                  Next-day delivery on all orders
+                </p>
               </div>
             </div>
             <div className="flex items-center gap-4 p-6 bg-gray-50 rounded-2xl">
@@ -66,7 +73,9 @@ export function Home() {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900">Secure Warranty</h3>
-                <p className="text-sm text-gray-500">2-year protection included</p>
+                <p className="text-sm text-gray-500">
+                  2-year protection included
+                </p>
               </div>
             </div>
             <div className="flex items-center gap-4 p-6 bg-gray-50 rounded-2xl">
@@ -87,22 +96,33 @@ export function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Featured Products</h2>
-              <p className="text-gray-600 max-w-2xl">Handpicked premium electronics designed to elevate your everyday workflow and entertainment.</p>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                Featured Products
+              </h2>
+              <p className="text-gray-600 max-w-2xl">
+                Handpicked premium electronics designed to elevate your everyday
+                workflow and entertainment.
+              </p>
             </div>
-            <Link to="/shop" className="hidden md:flex items-center text-blue-600 font-medium hover:text-blue-700">
+            <Link
+              to="/shop"
+              className="hidden md:flex items-center text-blue-600 font-medium hover:text-blue-700"
+            >
               View all <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
-          
+
           <div className="mt-10 text-center md:hidden">
-            <Link to="/shop" className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700">
+            <Link
+              to="/shop"
+              className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700"
+            >
               View all products <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </div>

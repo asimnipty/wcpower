@@ -1,60 +1,68 @@
-import { useState, useMemo } from 'react';
-import { products } from '../data/products';
+import React, { useState } from 'react';
+// Updated this line to import categories
+import { products, categories } from '../data/products';
 import { ProductCard } from '../components/ProductCard';
-import { Filter } from 'lucide-react';
 
-export function Shop() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+const Shop = () => {
+  const [activeCategory, setActiveCategory] = useState('All');
 
-  const categories = ['All', ...Array.from(new Set(products.map(p => p.category)))];
-
-  const filteredProducts = useMemo(() => {
-    if (selectedCategory === 'All') return products;
-    return products.filter(p => p.category === selectedCategory);
-  }, [selectedCategory]);
+  const filteredProducts = activeCategory === 'All' 
+    ? products 
+    : products.filter(p => p.category === activeCategory);
 
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-6">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">All Products</h1>
-            <p className="text-gray-600">Browse our complete collection of premium electronics.</p>
-          </div>
+    <div className="min-h-screen bg-gray-50 pb-20">
+      {/* Header */}
+      <div className="bg-gradient-to-b from-white to-[#f0fff4] py-16 text-center">
+        <h1 className="text-4xl font-bold text-[#2e7d32] mb-4 uppercase tracking-wide">Our Products</h1>
+        <p className="text-green-700 max-w-xl mx-auto px-4">Reliable energy solutions for a safer future.</p>
+      </div>
+
+      <div className="container mx-auto px-4">
+        {/* Category Filter Tabs */}
+        <div className="flex flex-wrap justify-center gap-3 my-10">
+          <button 
+            onClick={() => setActiveCategory('All')}
+            className={`px-6 py-2 rounded-full text-sm font-bold transition-all shadow-sm ${
+              activeCategory === 'All' 
+                ? 'bg-green-600 text-white' 
+                : 'bg-white text-gray-600 hover:bg-green-50 border border-gray-100'
+            }`}
+          >
+            All Products
+          </button>
           
-          <div className="flex items-center gap-3 overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
-            <div className="flex items-center text-gray-500 mr-2">
-              <Filter className="h-5 w-5 mr-2" />
-              <span className="font-medium">Filter:</span>
-            </div>
-            {categories.map(category => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  selectedCategory === category
-                    ? 'bg-gray-900 text-white'
-                    : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-100'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+          {categories.map(cat => (
+            <button 
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-6 py-2 rounded-full text-sm font-bold transition-all shadow-sm ${
+                activeCategory === cat 
+                  ? 'bg-green-600 text-white' 
+                  : 'bg-white text-gray-600 hover:bg-green-50 border border-gray-100'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredProducts.map((product) => (
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {filteredProducts.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
-        
+
+        {/* Empty State */}
         {filteredProducts.length === 0 && (
-          <div className="text-center py-24">
-            <p className="text-xl text-gray-500">No products found in this category.</p>
+          <div className="text-center py-20">
+            <p className="text-gray-500">No products found in this category.</p>
           </div>
         )}
       </div>
     </div>
   );
-}
+};
+
+export default Shop;
