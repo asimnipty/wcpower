@@ -44,7 +44,7 @@ export function ProductDetail() {
             </div>
 
             <div className="mb-8">
-              <p className="text-3xl font-bold text-gray-900">${product.price}</p>
+              <p className="text-3xl font-bold text-gray-900">BDT {product.price.toLocaleString()}</p>
             </div>
 
             <div className="mb-8">

@@ -63,7 +63,7 @@ export function CartDrawer() {
                     <div>
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <h3 className="line-clamp-1"><Link to={`/product/${item.id}`} onClick={toggleCart}>{item.name}</Link></h3>
-                        <p className="ml-4">${(item.price * item.quantity).toFixed(2)}</p>
+                        <p className="ml-4">BDT {(item.price * item.quantity).toLocaleString()}</p>
                       </div>
                       <p className="mt-1 text-sm text-gray-500">{item.category}</p>
                     </div>
@@ -101,21 +101,16 @@ export function CartDrawer() {
 
         {items.length > 0 && (
           <div className="border-t border-gray-100 p-6 bg-gray-50">
-            <div className="flex justify-between text-base font-medium text-gray-900 mb-4">
+            <div className="flex justify-between text-base font-medium text-gray-900 mb-2">
               <p>Subtotal</p>
-              <p>${getCartTotal().toFixed(2)}</p>
+              <p>BDT {getCartTotal().toLocaleString()}</p>
             </div>
-            <p className="text-sm text-gray-500 mb-6">
-              Shipping and taxes calculated at checkout.
-            </p>
+            <p className="text-sm text-gray-500 mb-1">Shipping: <span className="text-green-600 font-medium">Free</span></p>
+            <p className="text-sm text-gray-500 mb-4">Free returns within 14 days</p>
             <button
-              className="w-full flex items-center justify-center rounded-xl border border-transparent bg-blue-600 px-6 py-4 text-base font-medium text-white shadow-sm hover:bg-blue-700 transition-colors"
-              onClick={() => {
-                alert('Checkout functionality would go here!');
-                toggleCart();
-              }}
+              className="w-full flex items-center justify-center rounded-xl border border-transparent bg-green-600 px-6 py-4 text-base font-medium text-white shadow-sm hover:bg-green-700 transition-colors"
             >
-              Checkout
+              Checkout – Cash on Delivery
             </button>
           </div>
         )}
