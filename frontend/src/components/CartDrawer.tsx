@@ -1,9 +1,10 @@
 import { X, Minus, Plus, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '../store/useCartStore';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export function CartDrawer() {
   const { items, isCartOpen, toggleCart, updateQuantity, removeItem, getCartTotal } = useCartStore();
+  const navigate = useNavigate();
 
   if (!isCartOpen) return null;
 
@@ -108,6 +109,7 @@ export function CartDrawer() {
             <p className="text-sm text-gray-500 mb-1">Shipping: <span className="text-green-600 font-medium">Free</span></p>
             <p className="text-sm text-gray-500 mb-4">Free returns within 14 days</p>
             <button
+              onClick={() => { toggleCart(); navigate('/checkout'); }}
               className="w-full flex items-center justify-center rounded-xl border border-transparent bg-green-600 px-6 py-4 text-base font-medium text-white shadow-sm hover:bg-green-700 transition-colors"
             >
               Checkout – Cash on Delivery
