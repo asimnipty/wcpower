@@ -83,7 +83,7 @@ export function Home() {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900">Free Shipping</h3>
-                <p className="text-sm text-gray-500">On orders over $50</p>
+                <p className="text-sm text-gray-500">On orders over BDT 1,000</p>
               </div>
             </div>
           </div>
