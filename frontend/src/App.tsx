@@ -13,7 +13,7 @@ import { Checkout } from './pages/Checkout';
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/wcpower">
       <div className="min-h-screen flex flex-col font-sans text-gray-900 bg-white">
         <Navbar />
         <CartDrawer />
